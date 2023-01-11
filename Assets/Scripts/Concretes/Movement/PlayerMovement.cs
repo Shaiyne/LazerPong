@@ -25,7 +25,6 @@ public class PlayerMovement
                 player.transform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
-        //player.SetAnimatonStates(PlayerAnimationStates.Runs);
     }
 
     public void PlayerJump()
