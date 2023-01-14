@@ -3,5 +3,6 @@ using UnityEngine.Events;
 
 public class UISignals : Singleton<UISignals>
 {
-    //public UnityAction onJumpButton = delegate { };
+    public UnityAction onScoreImageCreate = delegate { };
+    public UnityAction onScorePoint = delegate { };
 }

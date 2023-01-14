@@ -15,12 +15,27 @@ public class PlayerPhysicsController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("LazerTag"))
         {
-            Debug.Log("LazerTag");
+            CoreSignals.Instance.onGameEnded?.Invoke();
+            Destroy(collision.gameObject.transform.parent.gameObject);
+            FindObjectOfType<AudioManager>().Play("DieSound");
         }
     }
 
     public void SetCollider(bool value)
     {
         playerCollider.enabled = value;
+    }
+
+    public void PlayerJump()
+    {
+        FindObjectOfType<AudioManager>().Play("JumpSound");
+        player.SetAnimatonStates(PlayerAnimationStates.Jumps);
+        player.transform.localScale = new Vector3(4f, 4f, 4f);
+        player.SetPlayerCollider(false);
+    }
+    public void PlayerJumpEnd()
+    {
+        player.transform.localScale = new Vector3(2f, 2f, 2f);
+        player.SetPlayerCollider(true);
     }
 }
